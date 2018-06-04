@@ -1,0 +1,571 @@
+PaCodeToRegexUtil2017CS.cs
+-------------------------
+function
+GetXmlHttpObject
+(
+)
+{
+-------------------------
+==============================
+function GetXmlHttpObject(){
+function\s+GetXmlHttpObject\s*\(\s*\)\s*\{\s*
+[ function GetXmlHttpObject(){ ]
+-------------------------
+var
+xmlHttp
+=
+null
+;
+-------------------------
+==============================
+	var xmlHttp=null;
+var\s+xmlHttp\s*=\s*null\s*;\s*
+[ var xmlHttp=null; ]
+-------------------------
+try
+{
+//
+Firefox
+,
+Opera
+8
+.
+0
++
+,
+Safari
+-------------------------
+==============================
+	try{// Firefox, Opera 8.0+, Safari
+try\s*\{\s*//\s*Firefox\s*,\s*Opera\s+8\s*\.\s*0\s*\+\s*,\s*Safari\s*
+[ try{// Firefox, Opera 8.0+, Safari ]
+-------------------------
+xmlHttp
+=
+new
+XMLHttpRequest
+(
+)
+;
+-------------------------
+==============================
+		xmlHttp=new XMLHttpRequest();
+xmlHttp\s*=\s*new\s+XMLHttpRequest\s*\(\s*\)\s*;\s*
+[ xmlHttp=new XMLHttpRequest(); ]
+-------------------------
+}
+catch
+(
+e
+)
+{
+//
+Internet
+Explorer
+-------------------------
+==============================
+	}catch (e){// Internet Explorer
+\}\s*catch\s*\(\s*e\s*\)\s*\{\s*//\s*Internet\s+Explorer\s*
+[ }catch (e){// Internet Explorer ]
+-------------------------
+try
+{
+-------------------------
+==============================
+		try{
+try\s*\{\s*
+[ try{ ]
+-------------------------
+xmlHttp
+=
+new
+ActiveXObject
+(
+"Msxml2.XMLHTTP"
+)
+;
+-------------------------
+==============================
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+xmlHttp\s*=\s*new\s+ActiveXObject\s*\(\s*"Msxml2\.XMLHTTP"\s*\)\s*;\s*
+[ xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); ]
+-------------------------
+}
+catch
+(
+e
+)
+{
+-------------------------
+==============================
+		}catch (e){
+\}\s*catch\s*\(\s*e\s*\)\s*\{\s*
+[ }catch (e){ ]
+-------------------------
+xmlHttp
+=
+new
+ActiveXObject
+(
+"Microsoft.XMLHTTP"
+)
+;
+-------------------------
+==============================
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+xmlHttp\s*=\s*new\s+ActiveXObject\s*\(\s*"Microsoft\.XMLHTTP"\s*\)\s*;\s*
+[ xmlHttp=new ActiveXObject("Microsoft.XMLHTTP"); ]
+-------------------------
+}
+-------------------------
+==============================
+		}
+\}\s*
+[ } ]
+-------------------------
+}
+-------------------------
+==============================
+	}
+\}\s*
+[ } ]
+-------------------------
+return
+xmlHttp
+;
+-------------------------
+==============================
+	return xmlHttp;
+return\s+xmlHttp\s*;\s*
+[ return xmlHttp; ]
+-------------------------
+}
+-------------------------
+==============================
+}
+\}\s*
+[ } ]
+-------------------------
+-------------------------
+==============================
+
+
+[  ]
+-------------------------
+function
+PA_js_ajaxGetContent
+(
+url
+,
+param
+,
+callback_function
+,
+obj
+)
+{
+-------------------------
+==============================
+function PA_js_ajaxGetContent(url, param, callback_function, obj){
+function\s+PA_js_ajaxGetContent\s*\(\s*url\s*,\s*param\s*,\s*callback_function\s*,\s*obj\s*\)\s*\{\s*
+[ function PA_js_ajaxGetContent(url, param, callback_function, obj){ ]
+-------------------------
+var
+XHR
+;
+-------------------------
+==============================
+	var XHR;
+var\s+XHR\s*;\s*
+[ var XHR; ]
+-------------------------
+var
+date
+=
+new
+Date
+(
+)
+;
+-------------------------
+==============================
+	var date=new Date();
+var\s+date\s*=\s*new\s+Date\s*\(\s*\)\s*;\s*
+[ var date=new Date(); ]
+-------------------------
+var
+m_strUrl
+=
+url
+;
+-------------------------
+==============================
+	var m_strUrl = url;
+var\s+m_strUrl\s*=\s*url\s*;\s*
+[ var m_strUrl = url; ]
+-------------------------
+var
+m_strParameter
+=
+"timeStamp="
++
+date
+.
+getTime
+(
+)
++
+"&ajax=1&"
++
+param
+;
+//
+"act=getCheckCode"
+;
+-------------------------
+==============================
+	var m_strParameter="timeStamp="+date.getTime()+"&ajax=1&" + param; //"act=getCheckCode";
+var\s+m_strParameter\s*=\s*"timeStamp="\s*\+\s*date\s*\.\s*getTime\s*\(\s*\)\s*\+\s*"&ajax=1&"\s*\+\s*param\s*;\s*//\s*"act=getCheckCode"\s*;\s*
+[ var m_strParameter="timeStamp="+date.getTime()+"&ajax=1&" + param; //"act=getCheckCode"; ]
+-------------------------
+-------------------------
+==============================
+
+
+[  ]
+-------------------------
+try
+{
+-------------------------
+==============================
+	try{
+try\s*\{\s*
+[ try{ ]
+-------------------------
+XHR
+=
+GetXmlHttpObject
+(
+)
+;
+-------------------------
+==============================
+		XHR = GetXmlHttpObject();
+XHR\s*=\s*GetXmlHttpObject\s*\(\s*\)\s*;\s*
+[ XHR = GetXmlHttpObject(); ]
+-------------------------
+if
+(
+XHR
+==
+null
+)
+{
+-------------------------
+==============================
+		if (XHR==null){
+if\s*\(\s*XHR\s*==\s*null\s*\)\s*\{\s*
+[ if (XHR==null){ ]
+-------------------------
+alert
+(
+"您的浏览器不支持AJAX！"
+)
+;
+-------------------------
+==============================
+			alert ("您的浏览器不支持AJAX！");
+alert\s*\(\s*"您的浏览器不支持AJAX！"\s*\)\s*;\s*
+[ alert ("您的浏览器不支持AJAX！"); ]
+-------------------------
+return
+;
+-------------------------
+==============================
+			return;
+return\s*;\s*
+[ return; ]
+-------------------------
+}
+-------------------------
+==============================
+		}
+\}\s*
+[ } ]
+-------------------------
+XHR
+.
+open
+(
+"POST"
+,
+m_strUrl
+)
+;
+-------------------------
+==============================
+		XHR.open("POST",m_strUrl);
+XHR\s*\.\s*open\s*\(\s*"POST"\s*,\s*m_strUrl\s*\)\s*;\s*
+[ XHR.open("POST",m_strUrl); ]
+-------------------------
+XHR
+.
+setRequestHeader
+(
+"Content-Type"
+,
+"application/x-www-form-urlencoded"
+)
+;
+-------------------------
+==============================
+		XHR.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+XHR\s*\.\s*setRequestHeader\s*\(\s*"Content-Type"\s*,\s*"application/x-www-form-urlencoded"\s*\)\s*;\s*
+[ XHR.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); ]
+-------------------------
+XHR
+.
+onreadystatechange
+=
+function
+(
+)
+{
+-------------------------
+==============================
+		XHR.onreadystatechange=function(){
+XHR\s*\.\s*onreadystatechange\s*=\s*function\s*\(\s*\)\s*\{\s*
+[ XHR.onreadystatechange=function(){ ]
+-------------------------
+if
+(
+XHR
+.
+readyState
+==
+4
+)
+-------------------------
+==============================
+			if(XHR.readyState==4)
+if\s*\(\s*XHR\s*\.\s*readyState\s*==\s*4\s*\)\s*
+[ if(XHR.readyState==4) ]
+-------------------------
+{
+-------------------------
+==============================
+			{
+\{\s*
+[ { ]
+-------------------------
+if
+(
+callback_function
+)
+{
+-------------------------
+==============================
+				if(callback_function) {
+if\s*\(\s*callback_function\s*\)\s*\{\s*
+[ if(callback_function) { ]
+-------------------------
+if
+(
+XHR
+.
+status
+==
+200
+)
+{
+-------------------------
+==============================
+					if(XHR.status==200) {
+if\s*\(\s*XHR\s*\.\s*status\s*==\s*200\s*\)\s*\{\s*
+[ if(XHR.status==200) { ]
+-------------------------
+//
+alert
+(
+XHR
+.
+responseText
+)
+;
+-------------------------
+==============================
+						//alert(XHR.responseText);
+//\s*alert\s*\(\s*XHR\s*\.\s*responseText\s*\)\s*;\s*
+[ //alert(XHR.responseText); ]
+-------------------------
+//
+objDisplay
+.
+innerHTML
+=
+XHR
+.
+responseText
+;
+-------------------------
+==============================
+						//objDisplay.innerHTML = XHR.responseText;
+//\s*objDisplay\s*\.\s*innerHTML\s*=\s*XHR\s*\.\s*responseText\s*;\s*
+[ //objDisplay.innerHTML = XHR.responseText; ]
+-------------------------
+callback_function
+(
+true
+,
+200
+,
+XHR
+.
+responseText
+,
+obj
+)
+;
+-------------------------
+==============================
+						callback_function(true, 200, XHR.responseText, obj);
+callback_function\s*\(\s*true\s*,\s*200\s*,\s*XHR\s*\.\s*responseText\s*,\s*obj\s*\)\s*;\s*
+[ callback_function(true, 200, XHR.responseText, obj); ]
+-------------------------
+}
+else
+{
+-------------------------
+==============================
+					} else {
+\}\s*else\s*\{\s*
+[ } else { ]
+-------------------------
+//
+alert
+(
+"1:"
++
+XHR
+.
+status
+)
+;
+-------------------------
+==============================
+						//alert("1:" + XHR.status);
+//\s*alert\s*\(\s*"1:"\s*\+\s*XHR\s*\.\s*status\s*\)\s*;\s*
+[ //alert("1:" + XHR.status); ]
+-------------------------
+callback_function
+(
+false
+,
+XHR
+.
+status
+,
+''
+,
+obj
+)
+;
+-------------------------
+==============================
+						callback_function(false, XHR.status, '', obj);
+callback_function\s*\(\s*false\s*,\s*XHR\s*\.\s*status\s*,\s*''\s*,\s*obj\s*\)\s*;\s*
+[ callback_function(false, XHR.status, '', obj); ]
+-------------------------
+}
+-------------------------
+==============================
+					}
+\}\s*
+[ } ]
+-------------------------
+}
+-------------------------
+==============================
+				}
+\}\s*
+[ } ]
+-------------------------
+}
+-------------------------
+==============================
+			}
+\}\s*
+[ } ]
+-------------------------
+}
+-------------------------
+==============================
+		}
+\}\s*
+[ } ]
+-------------------------
+XHR
+.
+send
+(
+m_strParameter
+)
+;
+-------------------------
+==============================
+		XHR.send(m_strParameter);
+XHR\s*\.\s*send\s*\(\s*m_strParameter\s*\)\s*;\s*
+[ XHR.send(m_strParameter); ]
+-------------------------
+-------------------------
+==============================
+
+
+[  ]
+-------------------------
+}
+catch
+(
+e
+)
+{
+-------------------------
+==============================
+	}catch (e){
+\}\s*catch\s*\(\s*e\s*\)\s*\{\s*
+[ }catch (e){ ]
+-------------------------
+alert
+(
+e
+.
+toString
+(
+)
+)
+;
+-------------------------
+==============================
+		alert(e.toString());
+alert\s*\(\s*e\s*\.\s*toString\s*\(\s*\)\s*\)\s*;\s*
+[ alert(e.toString()); ]
+-------------------------
+}
+-------------------------
+==============================
+	}
+\}\s*
+[ } ]
+-------------------------
+}
+-------------------------
+==============================
+}
+\}\s*
+[ } ]
+-------------------------
+-------------------------
+==============================
+
+
+[  ]
