@@ -1,0 +1,80 @@
+﻿function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try{// Firefox, Opera 8.0+, Safari
+		xmlHttp=new XMLHttpRequest();
+	}catch (e){// Internet Explorer
+		try{
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+		}catch (e){
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+	}
+	return xmlHttp;
+}
+
+function PA_js_ajaxGetContent(url, param, callback_function, obj){
+	var XHR;
+	var date=new Date();
+	var m_strUrl = url;
+	var m_strParameter="timeStamp="+date.getTime()+"&ajax=1&" + param; //"act=getCheckCode";
+
+	try{
+		XHR = GetXmlHttpObject();
+		if (XHR==null){
+			alert ("您的浏览器不支持AJAX！");
+			return;
+		}
+		XHR.open("POST",m_strUrl);
+		XHR.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		XHR.onreadystatechange=function(){
+			if(XHR.readyState==4)
+			{
+				if(callback_function) {
+					if(XHR.status==200) {
+						//alert(XHR.responseText);
+						//objDisplay.innerHTML = XHR.responseText;
+						callback_function(true, 200, XHR.responseText, obj);
+					} else {
+						//alert("1:" + XHR.status);
+						callback_function(false, XHR.status, '', obj);
+					}
+				}
+			}
+		}
+		XHR.send(m_strParameter);
+
+	}catch (e){
+		alert(e.toString());
+	}
+}
+
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Python 2.7
+#
+
+import re, os
+
+class PaCodeToRegexUtil():
+	WordChars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'
+	WriteChars = [' ', '\t', '\r', '\n']
+	SpecialChars = '^$[](){}.*?+|\\'
+	EOP = ['+', '-', '*', '/', '~', '|']
+	DOP = ['++', '--', '**', '==', '//', '||', '&&', '$$']
+	StrChars = ['"', '\'']
+
+	def __init__(self):
+		self._word  = 0
+		self._spec  = 0
+		self._space = 0
+		self.StrChar = None # '"'
+		self._string = 0
+
+		self.ns = 0
+
+	def _show(self):
+		print self.ns, 'flag=', self._word, self._spec, self._space, self._string, ' self.StrChar=', self.StrChar
+		self.ns += 1
+
